@@ -18,22 +18,11 @@ import (
 	"time"
 
 	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
-	"github.com/prometheus/client_golang/prometheus"
 	config_util "github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
 )
 
 var (
-	refreshFailuresCount = prometheus.NewCounter(
-		prometheus.CounterOpts{
-			Name: "prometheus_sd_openstack_refresh_failures_total",
-			Help: "The number of OpenStack-SD scrape failures.",
-		})
-	refreshDuration = prometheus.NewSummary(
-		prometheus.SummaryOpts{
-			Name: "prometheus_sd_openstack_refresh_duration_seconds",
-			Help: "The duration of an OpenStack-SD refresh in seconds.",
-		})
 	// DefaultSDConfig is the default OpenStack SD configuration.
 	DefaultSDConfig = SDConfig{
 		Port:            80,
