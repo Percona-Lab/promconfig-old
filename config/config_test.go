@@ -34,9 +34,9 @@ import (
 	"github.com/Percona-Lab/promconfig/discovery/triton"
 	"github.com/Percona-Lab/promconfig/discovery/zookeeper"
 
+	config_util "github.com/Percona-Lab/promconfig/common/config"
 	sd_config "github.com/Percona-Lab/promconfig/discovery/config"
 	"github.com/Percona-Lab/promconfig/util/testutil"
-	config_util "github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
 	"gopkg.in/yaml.v2"
 )

@@ -28,7 +28,7 @@ import (
 // BasicAuth contains basic HTTP authentication credentials.
 type BasicAuth struct {
 	Username string `yaml:"username"`
-	Password Secret `yaml:"password"`
+	Password string `yaml:"password"`
 
 	// Catches all undefined fields and must be empty after parsing.
 	XXX map[string]interface{} `yaml:",inline"`
@@ -67,7 +67,7 @@ type HTTPClientConfig struct {
 	// The HTTP basic authentication credentials for the targets.
 	BasicAuth *BasicAuth `yaml:"basic_auth,omitempty"`
 	// The bearer token for the targets.
-	BearerToken Secret `yaml:"bearer_token,omitempty"`
+	BearerToken string `yaml:"bearer_token,omitempty"`
 	// The bearer token file for the targets.
 	BearerTokenFile string `yaml:"bearer_token_file,omitempty"`
 	// HTTP proxy server to use to connect to the targets.
@@ -138,7 +138,7 @@ func NewHTTPClientFromConfig(cfg *HTTPClientConfig) (*http.Client, error) {
 		if err != nil {
 			return nil, fmt.Errorf("unable to read bearer token file %s: %s", cfg.BearerTokenFile, err)
 		}
-		bearerToken = Secret(strings.TrimSpace(string(b)))
+		bearerToken = strings.TrimSpace(string(b))
 	}
 
 	if len(bearerToken) > 0 {
@@ -146,7 +146,7 @@ func NewHTTPClientFromConfig(cfg *HTTPClientConfig) (*http.Client, error) {
 	}
 
 	if cfg.BasicAuth != nil {
-		rt = NewBasicAuthRoundTripper(cfg.BasicAuth.Username, Secret(cfg.BasicAuth.Password), rt)
+		rt = NewBasicAuthRoundTripper(cfg.BasicAuth.Username, cfg.BasicAuth.Password, rt)
 	}
 
 	// Return a new client with the configured round tripper.
@@ -154,19 +154,19 @@ func NewHTTPClientFromConfig(cfg *HTTPClientConfig) (*http.Client, error) {
 }
 
 type bearerAuthRoundTripper struct {
-	bearerToken Secret
+	bearerToken string
 	rt          http.RoundTripper
 }
 
 type basicAuthRoundTripper struct {
 	username string
-	password Secret
+	password string
 	rt       http.RoundTripper
 }
 
 // NewBasicAuthRoundTripper will apply a BASIC auth authorization header to a request unless it has
 // already been set.
-func NewBasicAuthRoundTripper(username string, password Secret, rt http.RoundTripper) http.RoundTripper {
+func NewBasicAuthRoundTripper(username string, password string, rt http.RoundTripper) http.RoundTripper {
 	return &basicAuthRoundTripper{username, password, rt}
 }
 
@@ -181,7 +181,7 @@ func (rt *bearerAuthRoundTripper) RoundTrip(req *http.Request) (*http.Response, 
 
 // NewBearerAuthRoundTripper adds the provided bearer token to a request unless the authorization
 // header has already been set.
-func NewBearerAuthRoundTripper(bearer Secret, rt http.RoundTripper) http.RoundTripper {
+func NewBearerAuthRoundTripper(bearer string, rt http.RoundTripper) http.RoundTripper {
 	return &bearerAuthRoundTripper{bearer, rt}
 }
 
