@@ -14,19 +14,13 @@
 package openstack
 
 import (
-	"context"
-	"errors"
 	"fmt"
 	"time"
 
-	"github.com/go-kit/kit/log"
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 	"github.com/prometheus/client_golang/prometheus"
 	config_util "github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
-	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
-	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 var (
@@ -107,51 +101,4 @@ func (c *SDConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
 		return fmt.Errorf("Openstack SD configuration requires a region")
 	}
 	return yaml_util.CheckOverflow(c.XXX, "openstack_sd_config")
-}
-
-func init() {
-	prometheus.MustRegister(refreshFailuresCount)
-	prometheus.MustRegister(refreshDuration)
-}
-
-// Discovery periodically performs OpenStack-SD requests. It implements
-// the Discoverer interface.
-type Discovery interface {
-	Run(ctx context.Context, ch chan<- []*targetgroup.Group)
-	refresh() (tg *targetgroup.Group, err error)
-}
-
-// NewDiscovery returns a new OpenStackDiscovery which periodically refreshes its targets.
-func NewDiscovery(conf *SDConfig, l log.Logger) (Discovery, error) {
-	var opts gophercloud.AuthOptions
-	if conf.IdentityEndpoint == "" {
-		var err error
-		opts, err = openstack.AuthOptionsFromEnv()
-		if err != nil {
-			return nil, err
-		}
-	} else {
-		opts = gophercloud.AuthOptions{
-			IdentityEndpoint: conf.IdentityEndpoint,
-			Username:         conf.Username,
-			UserID:           conf.UserID,
-			Password:         string(conf.Password),
-			TenantName:       conf.ProjectName,
-			TenantID:         conf.ProjectID,
-			DomainName:       conf.DomainName,
-			DomainID:         conf.DomainID,
-		}
-	}
-	switch conf.Role {
-	case OpenStackRoleHypervisor:
-		hypervisor := NewHypervisorDiscovery(&opts,
-			time.Duration(conf.RefreshInterval), conf.Port, conf.Region, l)
-		return hypervisor, nil
-	case OpenStackRoleInstance:
-		instance := NewInstanceDiscovery(&opts,
-			time.Duration(conf.RefreshInterval), conf.Port, conf.Region, l)
-		return instance, nil
-	default:
-		return nil, errors.New("unknown OpenStack discovery role")
-	}
 }
