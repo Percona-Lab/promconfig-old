@@ -17,8 +17,8 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"github.com/prometheus/common/model"
 	"github.com/Percona-Lab/promconfig/util/yaml"
+	"github.com/prometheus/common/model"
 )
 
 // Group is a set of targets with a common label set(production , test, staging etc.).
