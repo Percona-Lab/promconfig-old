@@ -26,7 +26,7 @@ import (
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/hypervisors"
 	"github.com/gophercloud/gophercloud/pagination"
 	"github.com/prometheus/common/model"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
 )
 
 const (

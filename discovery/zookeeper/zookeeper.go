@@ -26,10 +26,10 @@ import (
 	"github.com/prometheus/common/model"
 	"github.com/samuel/go-zookeeper/zk"
 
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	"github.com/prometheus/prometheus/util/strutil"
-	"github.com/prometheus/prometheus/util/treecache"
-	yaml_util "github.com/prometheus/prometheus/util/yaml"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/util/strutil"
+	"github.com/Percona-Lab/promconfig/util/treecache"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 var (

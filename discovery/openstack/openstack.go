@@ -25,8 +25,8 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	config_util "github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	yaml_util "github.com/prometheus/prometheus/util/yaml"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 var (

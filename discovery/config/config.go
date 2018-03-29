@@ -14,20 +14,20 @@
 package config
 
 import (
-	"github.com/prometheus/prometheus/discovery/azure"
-	"github.com/prometheus/prometheus/discovery/consul"
-	"github.com/prometheus/prometheus/discovery/dns"
-	"github.com/prometheus/prometheus/discovery/ec2"
-	"github.com/prometheus/prometheus/discovery/file"
-	"github.com/prometheus/prometheus/discovery/gce"
-	"github.com/prometheus/prometheus/discovery/kubernetes"
-	"github.com/prometheus/prometheus/discovery/marathon"
-	"github.com/prometheus/prometheus/discovery/openstack"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	"github.com/prometheus/prometheus/discovery/triton"
-	"github.com/prometheus/prometheus/discovery/zookeeper"
+	"github.com/Percona-Lab/promconfig/discovery/azure"
+	"github.com/Percona-Lab/promconfig/discovery/consul"
+	"github.com/Percona-Lab/promconfig/discovery/dns"
+	"github.com/Percona-Lab/promconfig/discovery/ec2"
+	"github.com/Percona-Lab/promconfig/discovery/file"
+	"github.com/Percona-Lab/promconfig/discovery/gce"
+	"github.com/Percona-Lab/promconfig/discovery/kubernetes"
+	"github.com/Percona-Lab/promconfig/discovery/marathon"
+	"github.com/Percona-Lab/promconfig/discovery/openstack"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/discovery/triton"
+	"github.com/Percona-Lab/promconfig/discovery/zookeeper"
 
-	yaml_util "github.com/prometheus/prometheus/util/yaml"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 // ServiceDiscoveryConfig configures lists of different service discovery mechanisms.

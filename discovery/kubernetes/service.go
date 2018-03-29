@@ -25,8 +25,8 @@ import (
 	apiv1 "k8s.io/client-go/pkg/api/v1"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	"github.com/prometheus/prometheus/util/strutil"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/util/strutil"
 )
 
 // Service implements discovery of Kubernetes services.

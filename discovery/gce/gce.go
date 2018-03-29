@@ -28,9 +28,9 @@ import (
 	"golang.org/x/oauth2/google"
 	compute "google.golang.org/api/compute/v1"
 
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	"github.com/prometheus/prometheus/util/strutil"
-	yaml_util "github.com/prometheus/prometheus/util/yaml"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/util/strutil"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 const (

@@ -28,7 +28,7 @@ import (
 
 	"github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
 )
 
 var (

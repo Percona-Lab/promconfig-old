@@ -23,9 +23,9 @@ import (
 	"time"
 
 	"github.com/prometheus/common/model"
-	"github.com/prometheus/prometheus/config"
-	sd_config "github.com/prometheus/prometheus/discovery/config"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/config"
+	sd_config "github.com/Percona-Lab/promconfig/discovery/config"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
 	"gopkg.in/yaml.v2"
 )
 

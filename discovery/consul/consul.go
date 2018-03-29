@@ -29,10 +29,10 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	config_util "github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	"github.com/prometheus/prometheus/util/httputil"
-	"github.com/prometheus/prometheus/util/strutil"
-	yaml_util "github.com/prometheus/prometheus/util/yaml"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/util/httputil"
+	"github.com/Percona-Lab/promconfig/util/strutil"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 const (

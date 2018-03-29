@@ -28,9 +28,9 @@ import (
 	"github.com/prometheus/common/model"
 
 	config_util "github.com/prometheus/common/config"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	"github.com/prometheus/prometheus/util/httputil"
-	yaml_util "github.com/prometheus/prometheus/util/yaml"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/util/httputil"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 const (

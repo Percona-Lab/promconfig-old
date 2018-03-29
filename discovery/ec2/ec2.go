@@ -33,9 +33,9 @@ import (
 
 	"github.com/aws/aws-sdk-go/service/ec2"
 	config_util "github.com/prometheus/common/config"
-	"github.com/prometheus/prometheus/discovery/targetgroup"
-	"github.com/prometheus/prometheus/util/strutil"
-	yaml_util "github.com/prometheus/prometheus/util/yaml"
+	"github.com/Percona-Lab/promconfig/discovery/targetgroup"
+	"github.com/Percona-Lab/promconfig/util/strutil"
+	yaml_util "github.com/Percona-Lab/promconfig/util/yaml"
 )
 
 const (
