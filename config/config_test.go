@@ -34,10 +34,10 @@ import (
 	"github.com/Percona-Lab/promconfig/discovery/triton"
 	"github.com/Percona-Lab/promconfig/discovery/zookeeper"
 
-	config_util "github.com/prometheus/common/config"
-	"github.com/prometheus/common/model"
 	sd_config "github.com/Percona-Lab/promconfig/discovery/config"
 	"github.com/Percona-Lab/promconfig/util/testutil"
+	config_util "github.com/prometheus/common/config"
+	"github.com/prometheus/common/model"
 	"gopkg.in/yaml.v2"
 )
 
@@ -556,6 +556,8 @@ func TestLoadConfig(t *testing.T) {
 
 // YAML marshalling must not reveal authentication credentials.
 func TestElideSecrets(t *testing.T) {
+	t.Skip("we keep secrets")
+
 	c, err := LoadFile("testdata/conf.good.yml")
 	testutil.Ok(t, err)
 
